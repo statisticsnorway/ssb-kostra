@@ -447,6 +447,13 @@ KostraRegnskapEnPeriode = function(data,funksjonshierarki,artshierarki,data_saer
   #  iterasjon med fag. At beregningstestene kan håndtere formler gjør dette ekstra avansert. Det var behov for ny kode
   #  inni hovedfunksjonen for å ta ut akkurat det som var ønskelig.
 
+  AddLeadingZeros <-  function(codes, ...){
+    if (!is.character(codes)) {
+      codes <- as.character(codes)
+    }
+    SSBtools::AddLeadingZeros(codes, ...)
+  }
+
   StopOrWarning = stop
 
   if(printData){
