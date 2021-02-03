@@ -15,14 +15,7 @@
 #' @param limitModel  Studentized residuals limit. Above limit -> outlier.
 #' @param limitIterate Studentized residuals limit for iterative calculation of studentized residuals.
 #'
-#' @details Imputations are performed by running an imputation model within each strata.
-#'          Division into three groups are based on studentized residuals. Calculations of studentized residuals
-#'          are performed by iterativily throwing out observations from the model fitting.
-#'
-#'          Output is a list of two data sets, micro has as many rows as input and
-#'          aggregates has one row for each strata.
-#'
-#'          This function is related to \code{\link{ImputeRegression}}
+#' @details This function is related to \code{\link{ImputeRegression}}
 #'          and the structure and the names of output are very similar.
 #'          Note that missing values of x are allowed here.
 #'
