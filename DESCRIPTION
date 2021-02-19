@@ -1,11 +1,12 @@
 Package: Kostra
 Type: Package
 Title: Functions for Kostra
-Version: 1.2.1
-Date: 2021-02-03
+Version: 1.2.2
+Date: 2021-02-19
 Author: Magnar Lillegård, Anna-Karin Mevik, Johan Heldal og Øyvind Langsrud
 Maintainer: Øyvind Langsrud <oyl@ssb.no>
 Depends: R (>= 3.0.0), SmallCountRounding, easySdcTable, SSBtools, MASS, Matrix, stringr 
+Imports: utils
 Description: Functions for Kostra.
 License: SSB intern
 LazyData: TRUE
