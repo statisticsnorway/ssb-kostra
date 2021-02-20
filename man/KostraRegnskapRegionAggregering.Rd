@@ -57,8 +57,8 @@ Parameteren \code{slettOutput0} har mening i tillegg til \code{slettInput0} ders
 Kjernefunksjonalitet i funksjonen kan på sikt ende opp som en ny funksjon i pakka SSBtools
 }
 \examples{
-hierarki <- Work:::Get_litehierarki()
-data22 <- Work:::Get_bev_basis_R_36()[1:22, ]
+hierarki <- Kostra:::Get_litehierarki()           # Ta bort Kostra::: dersom funksjonen er hentet med source(....
+data22 <- Kostra:::Get_bev_basis_R_36()[1:22, ]   # Ta bort Kostra::: dersom funksjonen er hentet med source(....
 KostraRegnskapRegionAggregering(data22, hierarki)
 KostraRegnskapRegionAggregering(data22, hierarki, drop = NA)
 KostraRegnskapRegionAggregering(data22, hierarki, drop = FALSE)
