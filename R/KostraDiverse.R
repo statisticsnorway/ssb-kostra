@@ -71,7 +71,7 @@ StepwiseSelectionCrossDataDummyHierarchyMultiplyWithValueMatrix = function(dataD
   print("StepwiseSelectionCrossDataDummyHierarchyMultiplyWithY")
   n=length(dataDummyHierarchies)
   if(n==0)
-    return(dataDummyHierarchies %*% valueMatrix)
+    return(Mult(dataDummyHierarchies, valueMatrix)) #return(dataDummyHierarchies %*% valueMatrix)
   m = NROW(codeFrame)
   k=0L
   #z=Matrix(0,m,NCOL(dataDummyHierarchies[[1]]))
@@ -85,7 +85,7 @@ StepwiseSelectionCrossDataDummyHierarchyMultiplyWithValueMatrix = function(dataD
     #print(dim(valueMatrix))
     #print(sel)
 
-    z[sel,] = as.matrix(xSel %*% valueMatrix)
+    z[sel,] = as.matrix(Mult(xSel, valueMatrix)) #as.matrix(xSel %*% valueMatrix)
     k = max(sel)
   }
   colnames(z) = colnames(valueMatrix)

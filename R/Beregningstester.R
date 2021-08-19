@@ -98,7 +98,8 @@ LagBeregningInputBold = function(a1, periode, doStack = TRUE){
 
   z = cbind(fromCrossCode, sign = dataDummyHierarchy, valueMatrix)
 
-  output1 = as.matrix(a1$dataDummyHierarchy%*%a1$valueMatrix)
+  #output1 = as.matrix(a1$dataDummyHierarchy%*%a1$valueMatrix)
+  output1 = as.matrix(Mult(a1$dataDummyHierarchy, a1$valueMatrix))
 
   #output = output1 + output2 + output3 + output4
 
@@ -151,10 +152,16 @@ LagBeregningInput = function(a1,a2,a3,a4, periode, doStack = TRUE){
 
   z = cbind(fromCrossCode, sign = as.vector(dataDummyHierarchy), valueMatrix)
 
-  output1 = as.matrix(a1$dataDummyHierarchy%*%a1$valueMatrix)
-  output2 = as.matrix(a2$dataDummyHierarchy%*%a2$valueMatrix)
-  output3 = as.matrix(a3$dataDummyHierarchy%*%a3$valueMatrix)
-  output4 = as.matrix(a4$dataDummyHierarchy%*%a4$valueMatrix)
+  #output1 = as.matrix(a1$dataDummyHierarchy%*%a1$valueMatrix)
+  #output2 = as.matrix(a2$dataDummyHierarchy%*%a2$valueMatrix)
+  #output3 = as.matrix(a3$dataDummyHierarchy%*%a3$valueMatrix)
+  #output4 = as.matrix(a4$dataDummyHierarchy%*%a4$valueMatrix)
+
+  output1 = as.matrix(Mult(a1$dataDummyHierarchy, a1$valueMatrix))
+  output2 = as.matrix(Mult(a2$dataDummyHierarchy, a2$valueMatrix))
+  output3 = as.matrix(Mult(a3$dataDummyHierarchy, a3$valueMatrix))
+  output4 = as.matrix(Mult(a4$dataDummyHierarchy, a4$valueMatrix))
+
 
   output = output1 + output2 + output3 + output4
 
@@ -164,6 +171,9 @@ LagBeregningInput = function(a1,a2,a3,a4, periode, doStack = TRUE){
   out3 = cbind(a1$toCrossCode,type="OUTPUT_Nett_Saer", sign = 0,output3, stringsAsFactors = FALSE)
   out4 = cbind(a1$toCrossCode,type="OUTPUT_Nett_Kasse", sign = 0,output4, stringsAsFactors = FALSE)
 
+  #owB <<- list(a1,a2,a3,a4)
+  #owA <<- list(output, output1, output2, output3, output4)
+  #ow <<- list(out, out1, out2, out3, out4, z[nonZero, ,drop=FALSE])
 
   x = cbind(periode=periode, IntegerDataFrame(rbind(
     out, out1, out2, out3, out4,
