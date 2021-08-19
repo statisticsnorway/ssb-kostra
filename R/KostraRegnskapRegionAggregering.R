@@ -22,7 +22,6 @@
 #'                      Ved FALSE genereres alle kombinasjoner av alle dimvar-variabler.
 #'                      Ved NA vil output for alle aggregater ha alle dimvar-kombinasjoner som finnes i inputdata.
 #' @param verbose       Ved TRUE printes informasjon om fremdrift
-#' @param highspeed     Ved TRUE brukes en raskere algoritme (men ikke når drop=FALSE)
 #'
 #' @return   En data frame
 #' @export
@@ -42,7 +41,10 @@ KostraRegnskapRegionAggregering <- function(data, hierarki, slettInput0=FALSE, s
                                            region= "region", belop = "belop",
                                            dimvar = c("regnskapsomfang", "kontoklasse", "art", "funksjon"),
                                            drop = TRUE,
-                                           verbose = TRUE, highspeed = TRUE){ # True defaut nå. Må erstatte duplicated med noe raskere
+                                           verbose = TRUE){ #, highspeed = TRUE){ # True defaut nå. Må erstatte duplicated med noe raskere
+
+  integerInOutput = is.integer(data[[belop]])
+
   if(is.null(drop))
     drop=NA
 
@@ -50,6 +52,8 @@ KostraRegnskapRegionAggregering <- function(data, hierarki, slettInput0=FALSE, s
   if(!is.na(drop) & !drop){
     highspeed <- FALSE
   }
+
+  highspeed = FALSE # Setter til FALSE, men beholder kode for muligheter seinere (raskere duplicated)
 
   if(highspeed){
     cat(" [ Forberede highspeed ...")
@@ -110,6 +114,8 @@ KostraRegnskapRegionAggregering <- function(data, hierarki, slettInput0=FALSE, s
   if(!drop){
     cat("]\n")
     flush.console()
+
+    # Husk if(integerInOutput)
 
     return(SSBtools::HierarchyCompute(data=data, valueVar = belop,
                                      hierarchies=hierarchies,
@@ -177,6 +183,9 @@ KostraRegnskapRegionAggregering <- function(data, hierarki, slettInput0=FALSE, s
 
   if(slettOutput0)
     data <- data[data[[belop]]!=0, ,drop=FALSE]
+
+  if(integerInOutput)
+    data[[belop]] <- LagInteger(data[[belop]])
 
   data
 }
