@@ -37,7 +37,8 @@ SingleRowHierarchyComputations <- function(a, doStack = FALSE, valueName = "valu
 
   z <- cbind(a$fromCrossCode, sign = as.vector(dataDummyHierarchy), valueMatrix)
 
-  out1 <- cbind(a$toCrossCode, sign = 0, as.matrix(a$dataDummyHierarchy %*% a$valueMatrix), stringsAsFactors = FALSE)
+  #out1 <- cbind(a$toCrossCode, sign = 0, as.matrix(a$dataDummyHierarchy %*% a$valueMatrix), stringsAsFactors = FALSE)
+  out1 <- cbind(a$toCrossCode, sign = 0, as.matrix(Mult(a$dataDummyHierarchy, a$valueMatrix)), stringsAsFactors = FALSE)
 
   x <- rbind(out1, z[nonZero, , drop = FALSE])
 

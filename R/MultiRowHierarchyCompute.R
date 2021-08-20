@@ -33,7 +33,7 @@ MultiRowHierarchyComputations <- function(a, drop0 = TRUE, valueName = "values",
   dataDummyHierarchy <- rbind(0,t(as.matrix(a$dataDummyHierarchy)))
 
   valueMatrix <-
-  rbind(t(as.matrix(a$dataDummyHierarchy %*% a$valueMatrix)),
+    rbind(t(as.matrix(Mult(a$dataDummyHierarchy, a$valueMatrix))), #rbind(t(as.matrix(a$dataDummyHierarchy %*% a$valueMatrix)),
         matrix(a$valueMatrix,nrow=NROW(a$valueMatrix),ncol=NROW(a$dataDummyHierarchy)))
 
   rownames(valueMatrix ) = NULL

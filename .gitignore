@@ -3,3 +3,6 @@
 .RData
 .Ruserdata
 .gitignore
+Kostra.Rproj
+generatePDF.bat
+bibucket_push.bat

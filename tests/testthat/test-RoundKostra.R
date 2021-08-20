@@ -22,7 +22,7 @@ test_that("RoundKostra", {
   a = RoundKostra(ex1, idVar="region",strataVar=c("fylke","kostragr"),freqVar=4:15,freqVarGroup=freqVarGroup, makeSums=FALSE)
   b = table(as.vector(as.matrix(a[,-(1:3)])))
   expect_false(any(names(b) %in% c("1", "2")))
-  expect_equal(names(b[b>4]), c("0", "3", "4", "5", "6", "7", "8", "9", "11", "12", "22")) # Endring pga easyCheck
+  expect_equal(names(b[b>4]), c("0", "3", "4", "5", "6", "7", "8", "9", "11", "12")) # Endring pga easyCheck og rndSeed
 
   # ==========  With some single-groups  ================
   #freqVarGroup <- c(1,1,1,1,1,1,1,1,2,2,2,2,3,4,-1,5)

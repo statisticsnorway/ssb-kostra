@@ -14,8 +14,7 @@ KostraRegnskapRegionAggregering(
   belop = "belop",
   dimvar = c("regnskapsomfang", "kontoklasse", "art", "funksjon"),
   drop = TRUE,
-  verbose = TRUE,
-  highspeed = TRUE
+  verbose = TRUE
 )
 }
 \arguments{
@@ -40,8 +39,6 @@ Ved FALSE genereres alle kombinasjoner av alle dimvar-variabler.
 Ved NA vil output for alle aggregater ha alle dimvar-kombinasjoner som finnes i inputdata.}
 
 \item{verbose}{Ved TRUE printes informasjon om fremdrift}
-
-\item{highspeed}{Ved TRUE brukes en raskere algoritme (men ikke når drop=FALSE)}
 }
 \value{
 En data frame

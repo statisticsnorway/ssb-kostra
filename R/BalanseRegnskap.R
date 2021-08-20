@@ -546,7 +546,8 @@ LagBeregningInputBalanseOld = function(a1, periode, doStack = TRUE){
 
   z = cbind(fromCrossCode, sign = dataDummyHierarchy, valueMatrix)
 
-  output1 = as.matrix(a1$dataDummyHierarchy%*%a1$valueMatrix)
+  #output1 = as.matrix(a1$dataDummyHierarchy%*%a1$valueMatrix)
+  output1 = as.matrix(Mult(a1$dataDummyHierarchy, a1$valueMatrix))
 
   out1 = cbind(a1$toCrossCode, sign = 0,output1, stringsAsFactors = FALSE)
 
