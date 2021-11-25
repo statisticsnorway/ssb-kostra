@@ -10,7 +10,7 @@ Imports: utils
 Description: Functions for Kostra.
 License: SSB intern
 LazyData: TRUE
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Encoding: UTF-8
 Suggests: 
     testthat

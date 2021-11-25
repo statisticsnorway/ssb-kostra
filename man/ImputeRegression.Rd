@@ -174,22 +174,22 @@ ImputeRegression(z,strataName="k")
 zkjonn  <- rbind(cbind(z,kjonn="mann"),cbind(z,kjonn="kvinne"))
 zkjonn$y[1:34] <- zkjonn$y[1:34]  + 1:34
 
-# KjÃ¸ring der id egentlig ikke blir brukt. KjÃ¸nn i output.
+# Kjøring der id egentlig ikke blir brukt. Kjønn i output.
 ImputeRegression(zkjonn,idName="id",strataName= "k",kjonnOutput="kjonn")
 
-# KjÃ¸ring der id er kodet med id i list. Da lages data med unik id (fÃ¸rste treff) uten feilmelding eller warning (kan endres)
+# Kjøring der id er kodet med id i list. Da lages data med unik id (første treff) uten feilmelding eller warning (kan endres)
 ImputeRegression(zkjonn,idName=list(id="id"),strataName= "k",kjonnOutput="kjonn")
 
-# KjÃ¸ring med sammensatt id + tar med enkelvariabler i output.
+# Kjøring med sammensatt id + tar med enkelvariabler i output.
 ImputeRegression(zkjonn,idName=c("id","kjonn"),strataName= "k",kjonnOutput="kjonn",idOutput="id")
 
-# KjÃ¸ring med sammensatt id og samnnesat strata  + tar med enkelvariabler i output.
+# Kjøring med sammensatt id og samnnesat strata  + tar med enkelvariabler i output.
 ImputeRegression(zkjonn,idName=c("id","kjonn"),strataName= c("k","kjonn"),kjonnOutput="kjonn",idOutput="id")
 
 # Tilsvarende ved bruk av liste
 ImputeRegression(zkjonn,idName=list(id=c("id","kjonn")),strataName= list(c("k","kjonn")),kjonnOutput=list("kjonn"))
 
-# Bruker liste til Ã¥ snevre inn til ett kjÃ¸nn
+# Bruker liste til å snevre inn til ett kjønn
 ImputeRegression(zkjonn,idName=list(id="id",kjonn="mann"),strataName= list("k",kjonn="mann"),kjonnOutput=list("kjonn",kjonn="mann"))
 
 ImputeRegression(z,strataName="k",method="ratio")

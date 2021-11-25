@@ -172,9 +172,9 @@ Funksjonen KostraRegnskapBeregningHierarkiALT er alternativ til KostraRegnskapBe
  #==========================================================================
  #     Innlesing av data og omkoding
  #===========================================================================
-# NÃ¥r lesDataFraS er TRUE kjÃ¸res eksempelkoden omtrent slik den var under utvikling av koden.
-# Ved FALSE brukes data som ligger i pakken der bare noen regioner er med, men det kjÃ¸res da
-# pÃ¥ to Ã¥r samtidig. Kommentarer i koden om beregningstid og antall rader vil ikke stemme.
+# Når lesDataFraS er TRUE kjøres eksempelkoden omtrent slik den var under utvikling av koden.
+# Ved FALSE brukes data som ligger i pakken der bare noen regioner er med, men det kjøres da
+# på to år samtidig. Kommentarer i koden om beregningstid og antall rader vil ikke stemme.
 lesDataFraS <- FALSE
 if (!lesDataFraS){
   kData = KostraData("kostraRegnskapDataPen")       # KostraData("kostraRegnskapData") er alternativ der
@@ -191,7 +191,7 @@ if (!lesDataFraS){
 dataPath <- "S:/Prosjekt/2228 KOSTRA publisering/Metode/Regnskap/Matrise-klare filer"
 #dataPath <- "C:\\Users\\oyl\\Documents\\work\\Rworking\\regnskap\\Matrise-klare filer"
 
-aar = "2016" # "2015" kan ogsÃ¥ velges
+aar = "2016" # "2015" kan også velges
 
 dataPath <- paste(dataPath,aar,sep="/")
 
