@@ -64,7 +64,7 @@ KostraRegnskapRegionAggregering <- function(data, hierarki, slettInput0=FALSE, s
 
     z <- KostraRegnskapRegionAggregering(cbind(data[, c(region, belop)], diMvAr = rg$idx), hierarki=hierarki, slettInput0=slettInput0,
                                          slettOutput0=slettOutput0, fixRegionkode =fixRegionkode, region=region, belop=belop,
-                                         dimvar = "diMvAr", drop=drop, verbose=verbose, highspeed = FALSE)
+                                         dimvar = "diMvAr", drop=drop, verbose=verbose)   #, highspeed = FALSE)
     z <- cbind(z[, region, drop=FALSE], data[rg$idg[as.integer(z$diMvAr)], dimvar, drop=FALSE], z[, belop, drop=FALSE])
     rownames(z) <- NULL
     return(z)
