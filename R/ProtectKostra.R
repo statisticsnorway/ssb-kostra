@@ -10,7 +10,7 @@
 #' @param freqVarGroup  NULL (default) or integer representing groups of variables (see details)
 #' @param protectZeros When TRUE empty cells (count=0) is considered sensitive
 #' @param maxN All cells having counts <= maxN are set as primary suppressed
-#' @param method Parameter "method" in ProtectTable: "SIMPLEHEURISTIC", "Simple", "SimpleSingle", "OPT", "HITAS" or  "HYPERCUBE"
+#' @param method Parameter "method" in ProtectTable: Only "Gauss" possible (only-Gauss replacement function )
 #' @param output One of "suppressed" (default), "freq", "sdcStatus" or "extraWide" (only when  freqVarGroup is NULL)
 #' @param total	String used to name totals.
 #' @param split Parameter to \code{\link{AutoSplit}} - see varNames and rowData above.
@@ -58,7 +58,6 @@
 #'
 #' @return A data.frame with as many rows as input
 #'
-#' @importFrom easySdcTable ProtectTable
 #'
 #' @author Øyvind Langsrud
 #'
@@ -142,7 +141,7 @@
 #'
 ProtectKostra <- function(data,idVar = 1, strataVar = NULL,
                           freqVar = 2, freqVarGroup = NULL,
-                          protectZeros = TRUE, maxN = 3, method = "SimpleSingle",
+                          protectZeros = TRUE, maxN = 3, method = "Gauss",
                           output="suppressed",
                           total = "Total",
                           split = "_",

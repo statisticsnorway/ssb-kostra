@@ -13,7 +13,7 @@ ProtectKostra(
   freqVarGroup = NULL,
   protectZeros = TRUE,
   maxN = 3,
-  method = "SimpleSingle",
+  method = "Gauss",
   output = "suppressed",
   total = "Total",
   split = "_",
@@ -36,7 +36,7 @@ ProtectKostra(
 
 \item{maxN}{All cells having counts <= maxN are set as primary suppressed}
 
-\item{method}{Parameter "method" in ProtectTable: "SIMPLEHEURISTIC", "Simple", "SimpleSingle", "OPT", "HITAS" or  "HYPERCUBE"}
+\item{method}{Parameter "method" in ProtectTable: Only "Gauss" possible (only-Gauss replacement function )}
 
 \item{output}{One of "suppressed" (default), "freq", "sdcStatus" or "extraWide" (only when  freqVarGroup is NULL)}
 

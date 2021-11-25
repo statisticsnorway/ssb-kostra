@@ -51,7 +51,7 @@ RoundKostra1 <- function(data,idVar = 1, dimVar = 2:NCOL(data), freqVar = NULL, 
 
   colRT = !(names(z) %in% namesz[c(blockVar)])
 
-  colnames(z)[colRT] = easySdcTable:::RemoveTotal(colnames(z)[colRT],total=total)
+  colnames(z)[colRT] = RemoveTotal(colnames(z)[colRT],total=total)
 
 
   }
