@@ -153,7 +153,7 @@ ProtectKostra <- function(data,idVar = 1, strataVar = NULL,
   CheckInput(freqVarGroup, type = "integer", okSeveral=TRUE, okNULL = TRUE)
   CheckInput(protectZeros, type = "logical")
   CheckInput(maxN, type = "integer", min=0)
-  CheckInput(method,type = "character", alt = c("SIMPLEHEURISTIC","Simple","SimpleSingle","OPT", "HITAS", "HYPERCUBE", "Gauss"))
+  CheckInput(method,type = "character", alt = c("SIMPLEHEURISTIC","Simple","SimpleSingle","OPT", "HITAS", "HYPERCUBE", "Gauss", "GaussNoSingleton"))
   CheckInput(total, type = "character")
   CheckInput(split, type = "character",  okNULL = TRUE)
 
@@ -315,14 +315,22 @@ Ncol <- function(x){
 
 
 ProtectKostra1 <- function(data,idVar = 1, dimVar = 2:NCOL(data), freqVar = NULL,
-                           protectZeros = TRUE, maxN = 3, method = "SIMPLEHEURISTIC", output, ...){
+                           protectZeros = TRUE, maxN = 3, method = "Gauss", output, ...){
 
 
   allNA = FALSE
 
-  if(!is.null(freqVar))
-    if(!any(!is.na(data[,freqVar])))
+  if(!is.null(freqVar)){
+    is_na_data_freqVar <- is.na(data[,freqVar])
+    if(!any(!is_na_data_freqVar)){
       allNA = TRUE
+    } else {
+      if(any(is_na_data_freqVar)){
+        data[,freqVar][is_na_data_freqVar] <- 0L
+      }
+    }
+    rm(is_na_data_freqVar)
+  }
 
   allNAstatus = NA_character_  # eller "" ?
 
@@ -340,7 +348,7 @@ ProtectKostra1 <- function(data,idVar = 1, dimVar = 2:NCOL(data), freqVar = NULL
     warning(paste("ProtectTable caused ",a))
     a = try({
     a =ProtectTable(data=data,dimVar=c(idVar,dimVar),freqVar=freqVar,protectZeros=FALSE,
-                         maxN=0,method="SIMPLEHEURISTIC",  singleOutput = FALSE, ...)
+                         maxN=0,method="Gauss",  singleOutput = FALSE, ...)
     a$suppressed[-1] = NA
     a$sdcStatus[-1] = "e"
     a
@@ -357,7 +365,7 @@ ProtectKostra1 <- function(data,idVar = 1, dimVar = 2:NCOL(data), freqVar = NULL
     data2[,freqVar] = 1
     a = try({
     a = ProtectTable(data=data2,dimVar=c(idVar,dimVar),freqVar=freqVar,protectZeros=FALSE,
-                     maxN=0,method="SIMPLEHEURISTIC",  singleOutput = FALSE, ...)
+                     maxN=0,method="Gauss",  singleOutput = FALSE, ...)
     a$suppressed[-1] = NA
     if(allNA)
       a$sdcStatus[-1] = allNAstatus
