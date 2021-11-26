@@ -1,13 +1,13 @@
 Package: Kostra
 Type: Package
 Title: Functions for Kostra
-Version: 1.2.5
-Date: 2021-11-25
+Version: 1.3.0
+Date: 2021-11-26
 Author: Magnar Lillegård, Anna-Karin Mevik, Johan Heldal og Øyvind Langsrud
 Maintainer: Øyvind Langsrud <oyl@ssb.no>
 Depends: R (>= 3.0.0), SmallCountRounding, SSBtools, MASS, Matrix, stringr 
 Imports: utils, methods
-Description: Functions for Kostra.
+Description: Functions for Kostra. This version includes only-Gauss replacement versions of all easySdcTable-functions except shiny-gui. Thus easySdcTable  dependency and thereby sdcTable dependency is avoided.
 License: SSB intern
 LazyData: TRUE
 RoxygenNote: 7.1.2
