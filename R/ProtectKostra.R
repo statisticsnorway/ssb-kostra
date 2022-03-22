@@ -344,7 +344,7 @@ ProtectKostra1 <- function(data,idVar = 1, dimVar = 2:NCOL(data), freqVar = NULL
     a = "tull"  # class(a)=="try-error" is FALSE
 
 
-  if(class(a)=="try-error"){   # Try setting maxN=0 and protectZeros=FALSE. Freq can be computed correctly.
+  if(inherits(a, "try-error")){   # Try setting maxN=0 and protectZeros=FALSE. Freq can be computed correctly.
     warning(paste("ProtectTable caused ",a))
     a = try({
     a =ProtectTable(data=data,dimVar=c(idVar,dimVar),freqVar=freqVar,protectZeros=FALSE,
@@ -356,7 +356,7 @@ ProtectKostra1 <- function(data,idVar = 1, dimVar = 2:NCOL(data), freqVar = NULL
   }
 
 
-  if(class(a)=="try-error" | allNA){  # Try changing data. Variables can be created correctly.
+  if(inherits(a, "try-error") | allNA){  # Try changing data. Variables can be created correctly.
     if(allNA)
       warning("All data missing")
     else
@@ -378,7 +378,7 @@ ProtectKostra1 <- function(data,idVar = 1, dimVar = 2:NCOL(data), freqVar = NULL
   }
 
 
-  if(class(a)=="try-error"){ # Give up using ProtectTable
+  if(inherits(a, "try-error")){ # Give up using ProtectTable
     warning(paste("Extra ProtectTable run caused ",a))
     a = NULL
     a$freq = data[,c(idVar,freqVar),drop=FALSE]
