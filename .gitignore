@@ -6,3 +6,5 @@
 Kostra.Rproj
 generatePDF.bat
 bibucket_push.bat
+git_branch_-d.bat
+git_fetch_-p_origin.bat
