@@ -22,7 +22,9 @@ LmImputeMulti(
   returnFirst = FALSE,
   returnLast = TRUE,
   returnFinal = FALSE,
-  MultiFuction = function(x) {     max(abs(x)) },
+  MultiFuction = function(x) {
+     max(abs(x))
+ },
   estimationGroup = TRUE,
   unfoldCoef = FALSE,
   BackTransform = list(NULL),
