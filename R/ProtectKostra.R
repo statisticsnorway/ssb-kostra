@@ -162,8 +162,11 @@ ProtectKostra <- function(data,idVar = 1, strataVar = NULL,
 
   checkGroupTotal = TRUE
 
-  default_stringsAsFactors = default.stringsAsFactors()
-  options(stringsAsFactors = FALSE)
+  default_stringsAsFactors <- getOption("stringsAsFactors", default = FALSE)  #default.stringsAsFactors()
+  
+  if (default_stringsAsFactors) {
+    options(stringsAsFactors = FALSE)
+  }
 
   ## Littel "hack" is needed to combine possibility of using GetData()
   ## and at the same time keep original names
@@ -203,7 +206,11 @@ ProtectKostra <- function(data,idVar = 1, strataVar = NULL,
                           protectZeros=protectZeros, maxN=maxN, method =method,
                           output = output, total = total, split = split )
       if(!is.null(extraData)) return(suppressWarnings(CbindIdMatch(a,extraData)))
-      options(stringsAsFactors = default_stringsAsFactors)
+    
+      if (default_stringsAsFactors) {
+        options(stringsAsFactors = default_stringsAsFactors)
+      }
+    
       return(a)
     }
 
@@ -290,7 +297,11 @@ ProtectKostra <- function(data,idVar = 1, strataVar = NULL,
   matched[isnamatched] = NCOL(a) # Columns in input not found in output is set to NA
   a = a[,c(matched,notMatched) ,drop=FALSE] # The final data frame
   names(a)[isnamatched] = varNames[isnamatched] # Name the NA columns corretly
-  options(stringsAsFactors = default_stringsAsFactors)
+  
+  if (default_stringsAsFactors) {
+    options(stringsAsFactors = default_stringsAsFactors)
+  }
+  
   if(!is.null(extraData)) return(suppressWarnings(CbindIdMatch(a,extraData)))
   a
 }

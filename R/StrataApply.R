@@ -9,7 +9,6 @@
 #' @param multiUnlist When TRUE output elements "multi*" are split as separate elements.
 #' @param FunTotal A function to be applied on output element "aggregates" so that  output element "total" is produced
 #' @param FunMultiTotal A function to be applied on output element "multiAggregates" so that  output element "multiTotal" is produced
-#' @param stringsAsFactors Option used within the function (default is FALSE).
 #' @param ... Further arguments passed to Fun
 #'
 #' @return Output is a list with elements:
@@ -33,9 +32,14 @@
 #'  StrataApply(z,"k",FunFun,copyVar="six",x="x",multiUnlist=TRUE)
 StrataApply <- function(data,by,Fun,copyVar=NULL,byName=NULL,byNameDefault="strata",
                         multiUnlist=FALSE, FunTotal=NULL,FunMultiTotal=NULL,
-                        stringsAsFactors=FALSE, ...){
-  default_stringsAsFactors = default.stringsAsFactors()
-  options(stringsAsFactors = stringsAsFactors)
+                        ...){
+  stringsAsFactors <- FALSE
+  default_stringsAsFactors <- getOption("stringsAsFactors", default = FALSE)  #default.stringsAsFactors()
+  
+  if (default_stringsAsFactors) {
+    options(stringsAsFactors = stringsAsFactors)
+  }
+  
   noEmpty=TRUE  # Not input parameter since NULL will anyway be removed
   n = NROW(data)
   if(length(by)!=n){
@@ -168,7 +172,11 @@ StrataApply <- function(data,by,Fun,copyVar=NULL,byName=NULL,byNameDefault="stra
     if(!is.list(multiTotal)) multiTotal=NULL
     out=c(out,m,z,multiTotal)
   }
-  options(stringsAsFactors = default_stringsAsFactors)
+  
+  if (default_stringsAsFactors) {
+    options(stringsAsFactors = default_stringsAsFactors)
+  }
+  
   return(out)
   #tot=NULL
   #list(micro=y,aggregates=x,total=total,multiMicro=m,multiAggregates=z,multiTotal=multiTotal,other=w)

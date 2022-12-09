@@ -5,7 +5,6 @@
 #' @param removeNULL When TRUE (default) variables specified as NULL are completely removed.
 #'                  Otherwise zero column matrices will be embedded. It is possible to specify
 #'  removeNULL as a vector - one element for each variable.
-#' @param stringsAsFactors Option used within the function (default is FALSE).
 #' @param returnAsDataFrame When TRUE (default) a data.frame is returned. Otherwise a list is retuned.
 #'
 #' @return GetData returns a data frame by default (see details).
@@ -129,10 +128,15 @@
 #' GetData(z2, iD = list(id=c("tull", "ID")), x = "kari", y = "ola")
 #'
 #'
-GetData <- function(data, ..., removeNULL=TRUE, stringsAsFactors=FALSE,
+GetData <- function(data, ..., removeNULL=TRUE,
                     returnAsDataFrame=TRUE) {
-  default_stringsAsFactors = default.stringsAsFactors()
-  options(stringsAsFactors = stringsAsFactors)
+  stringsAsFactors <- FALSE
+  default_stringsAsFactors <- getOption("stringsAsFactors", default = FALSE)  # default.stringsAsFactors()
+  
+  if (default_stringsAsFactors) {
+    options(stringsAsFactors = stringsAsFactors)
+  }
+  
   a <- list(...)
   aInput <- a
 
@@ -191,7 +195,11 @@ GetData <- function(data, ..., removeNULL=TRUE, stringsAsFactors=FALSE,
   #attr(z,"origin")   <- aInput
   attr(z,"origVars") <- namesVars(a1)
   attr(z,"origCols") <- namesCols(a1)
-  options(stringsAsFactors = default_stringsAsFactors)
+  
+  if (default_stringsAsFactors) {
+    options(stringsAsFactors = default_stringsAsFactors)
+  }
+  
   z
 }
 

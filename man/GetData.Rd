@@ -6,13 +6,7 @@
 \alias{GetData2me}
 \title{Extracting a data.frame from a data.frame}
 \usage{
-GetData(
-  data,
-  ...,
-  removeNULL = TRUE,
-  stringsAsFactors = FALSE,
-  returnAsDataFrame = TRUE
-)
+GetData(data, ..., removeNULL = TRUE, returnAsDataFrame = TRUE)
 
 GetData1(...)
 
@@ -26,8 +20,6 @@ GetData2me(...)
 \item{removeNULL}{When TRUE (default) variables specified as NULL are completely removed.
                 Otherwise zero column matrices will be embedded. It is possible to specify
 removeNULL as a vector - one element for each variable.}
-
-\item{stringsAsFactors}{Option used within the function (default is FALSE).}
 
 \item{returnAsDataFrame}{When TRUE (default) a data.frame is returned. Otherwise a list is retuned.}
 }

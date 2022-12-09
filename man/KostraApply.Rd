@@ -22,7 +22,7 @@ A data.frame
 Apply a function with data frame output over data subsets
 }
 \note{
-The output ordering of the example depends on default.stringsAsFactors()
+The output ordering of the example depends on getOption("stringsAsFactors")
 }
 \examples{
 z1w <- KostraData("z1w")
