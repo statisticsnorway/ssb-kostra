@@ -79,7 +79,7 @@
 #'
 #' @return A data.frame unless extraOutput = TRUE
 #' @export
-#' @importFrom SSBtools AutoSplit Stack Unstack MakeHierFormula
+#' @importFrom SSBtools AutoSplit Stack Unstack MakeHierFormula FormulaSums
 #' @importFrom SmallCountRounding RoundViaDummy
 #' @importFrom stats aggregate
 #'
