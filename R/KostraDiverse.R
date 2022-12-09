@@ -46,51 +46,51 @@ PrintAllDuplicated = function(x,cols){
 
 
 
-# Funksjonen virker men ser ikke ut til å virke effektivt
-StepwiseSelectionCrossDataDummyHierarchy = function(dataDummyHierarchies,codeFrame,step=1000){
-  print("StepwiseSelectionCrossDataDummyHierarchy")
-  n=length(dataDummyHierarchies)
-  if(n==0)
-    return(dataDummyHierarchies)
-  m = NROW(codeFrame)
-  k=0L
-  z=Matrix(0,m,NCOL(dataDummyHierarchies[[1]]))
-  colnames(z) = colnames(dataDummyHierarchies[[1]])
-  while(k<m){
-    sel  = k+seq_len(min(step,m-k))
-    zSel = SelectionCrossDataDummyHierarchy(dataDummyHierarchies,codeFrame[sel, ,drop=TRUE])
-    z[sel,] = zSel
-    k = max(sel)
-  }
-  z
-}
+#   # Funksjonen virker men ser ikke ut til å virke effektivt
+#   StepwiseSelectionCrossDataDummyHierarchy = function(dataDummyHierarchies,codeFrame,step=1000){
+#     print("StepwiseSelectionCrossDataDummyHierarchy")
+#     n=length(dataDummyHierarchies)
+#     if(n==0)
+#       return(dataDummyHierarchies)
+#     m = NROW(codeFrame)
+#     k=0L
+#     z=Matrix(0,m,NCOL(dataDummyHierarchies[[1]]))
+#     colnames(z) = colnames(dataDummyHierarchies[[1]])
+#     while(k<m){
+#       sel  = k+seq_len(min(step,m-k))
+#       zSel = SelectionCrossDataDummyHierarchy(dataDummyHierarchies,codeFrame[sel, ,drop=TRUE])
+#       z[sel,] = zSel
+#       k = max(sel)
+#     }
+#     z
+#   }
 
 
-# Funksjonen virker men ser ikke ut til å virke effektivt
-StepwiseSelectionCrossDataDummyHierarchyMultiplyWithValueMatrix = function(dataDummyHierarchies,codeFrame,step=1000,valueMatrix){
-  print("StepwiseSelectionCrossDataDummyHierarchyMultiplyWithY")
-  n=length(dataDummyHierarchies)
-  if(n==0)
-    return(Mult(dataDummyHierarchies, valueMatrix)) #return(dataDummyHierarchies %*% valueMatrix)
-  m = NROW(codeFrame)
-  k=0L
-  #z=Matrix(0,m,NCOL(dataDummyHierarchies[[1]]))
-  #z=Matrix(0,m,NCOL(valueMatrix))
-  z=matrix(0,m,NCOL(valueMatrix))
-
-  while(k<m){
-    sel  = k+seq_len(min(step,m-k))
-    xSel = SelectionCrossDataDummyHierarchy(dataDummyHierarchies,codeFrame[sel, ,drop=TRUE])
-    #print(dim(xSel))
-    #print(dim(valueMatrix))
-    #print(sel)
-
-    z[sel,] = as.matrix(Mult(xSel, valueMatrix)) #as.matrix(xSel %*% valueMatrix)
-    k = max(sel)
-  }
-  colnames(z) = colnames(valueMatrix)
-  z
-}
+#   # Funksjonen virker men ser ikke ut til å virke effektivt
+#   StepwiseSelectionCrossDataDummyHierarchyMultiplyWithValueMatrix = function(dataDummyHierarchies,codeFrame,step=1000,valueMatrix){
+#     print("StepwiseSelectionCrossDataDummyHierarchyMultiplyWithY")
+#     n=length(dataDummyHierarchies)
+#     if(n==0)
+#       return(Mult(dataDummyHierarchies, valueMatrix)) #return(dataDummyHierarchies %*% valueMatrix)
+#     m = NROW(codeFrame)
+#     k=0L
+#     #z=Matrix(0,m,NCOL(dataDummyHierarchies[[1]]))
+#     #z=Matrix(0,m,NCOL(valueMatrix))
+#     z=matrix(0,m,NCOL(valueMatrix))
+#   
+#     while(k<m){
+#       sel  = k+seq_len(min(step,m-k))
+#       xSel = SelectionCrossDataDummyHierarchy(dataDummyHierarchies,codeFrame[sel, ,drop=TRUE])
+#       #print(dim(xSel))
+#       #print(dim(valueMatrix))
+#       #print(sel)
+#   
+#       z[sel,] = as.matrix(Mult(xSel, valueMatrix)) #as.matrix(xSel %*% valueMatrix)
+#       k = max(sel)
+#     }
+#     colnames(z) = colnames(valueMatrix)
+#     z
+#   }
 
 
 
@@ -429,26 +429,26 @@ FixRegionkode <- function(region, warningText = NULL) {
 
 
 
-WildcardGlobbingOld = function(x,wg,sign=TRUE){
-  #print("WildcardGlobbing")
-  #print(dim(x))
-  #print(dim(wg))
-  #print(wg)
-  sel = rep(FALSE,dim(x)[1])
-  for(i in 1:NROW(wg)){
-    seli = rep(TRUE,dim(x)[1])
-    for(j in 1:NCOL(wg)){
-      seli = seli&grepl(glob2rx(wg[i,j]) , x[,names(wg)[j]])
-    }
-    sel = sel|seli
-  }
-  #if(!sign)
-  #  return(x[!sel, ,drop=FALSE])
-  #x[sel, ,drop=FALSE]
-  if(!sign)
-    return(!sel)
-  sel
-}
+#  WildcardGlobbingOld = function(x,wg,sign=TRUE){
+#    #print("WildcardGlobbing")
+#    #print(dim(x))
+#    #print(dim(wg))
+#    #print(wg)
+#    sel = rep(FALSE,dim(x)[1])
+#    for(i in 1:NROW(wg)){
+#      seli = rep(TRUE,dim(x)[1])
+#      for(j in 1:NCOL(wg)){
+#        seli = seli&grepl(glob2rx(wg[i,j]) , x[,names(wg)[j]])
+#      }
+#      sel = sel|seli
+#    }
+#    #if(!sign)
+#    #  return(x[!sel, ,drop=FALSE])
+#    #x[sel, ,drop=FALSE]
+#    if(!sign)
+#      return(!sel)
+#    sel
+#  }
 
 
 
