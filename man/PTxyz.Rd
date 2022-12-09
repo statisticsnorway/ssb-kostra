@@ -32,6 +32,8 @@ Within this r package this function will be used for testing
 # Same examples as in ProtectTable 
 a1 <- PTxyz(EasyData("z1"), c("region","hovedint") ,"ant")
 a2 <- PTxyz(EasyData("z2"), c(1,3,4),5) 
+
+\dontrun{
  
 if (require(RegSDC)) { # RegSDCdata and SuppressDec
   # Same data as in RegSDCdata examples (and in paper)
@@ -63,7 +65,6 @@ if (require(RegSDC)) { # RegSDCdata and SuppressDec
   cbind(a$z, t(a$x) \%*\% cbind(a$y, yDec))
 }
 
-\dontrun{
 if (require(RegSDC)) {
   # An example involving two linked tables.  
   # It is demonstrated that the SIMPLEHEURISTIC approach to suppression is not safe.  

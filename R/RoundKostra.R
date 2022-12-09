@@ -79,7 +79,7 @@
 #'
 #' @return A data.frame unless extraOutput = TRUE
 #' @export
-#' @importFrom SSBtools AutoSplit Stack Unstack MakeHierFormula
+#' @importFrom SSBtools AutoSplit Stack Unstack MakeHierFormula FormulaSums
 #' @importFrom SmallCountRounding RoundViaDummy
 #' @importFrom stats aggregate
 #'
@@ -207,8 +207,11 @@ RoundKostra <- function(data,idVar, strataVar = NULL,
     set.seed(seed)
   }
 
-  default_stringsAsFactors = default.stringsAsFactors()
-  options(stringsAsFactors = FALSE)
+  default_stringsAsFactors <- getOption("stringsAsFactors", default = FALSE)  #default.stringsAsFactors()
+  
+  if (default_stringsAsFactors) {
+    options(stringsAsFactors = FALSE)
+  }
 
   if(output=="original")
     roundBase = 0
@@ -371,7 +374,11 @@ RoundKostra <- function(data,idVar, strataVar = NULL,
       methodOutput = NULL
       if(extraOutput){
         out$output = z
-        options(stringsAsFactors = default_stringsAsFactors)
+        
+        if (default_stringsAsFactors) {
+          options(stringsAsFactors = default_stringsAsFactors)
+        }
+        
         return(c(out,methodOutput))
       }
 
@@ -442,7 +449,10 @@ RoundKostra <- function(data,idVar, strataVar = NULL,
     z[,freqVar][statuso]="o"
   }
 
-  options(stringsAsFactors = default_stringsAsFactors)
+  if (default_stringsAsFactors) {
+    options(stringsAsFactors = default_stringsAsFactors)
+  }
+  
   if(!makeSums)
     return(z)
   if(is.null(freqVarGroup))
@@ -464,7 +474,7 @@ RowSumsByApply = function(x){
 
 
 correctFormula <- function(x){
-  if(class(x)=="formula") return(x)
+  if(inherits(x, "formula")) return(x)   #if(class(x)=="formula") return(x)
   x <- trimws(as.character(x))
   if(substr(x,1,1)!="~")
     x = paste("~",x,sep="")

@@ -28,8 +28,8 @@ ImputeRegression2(
 
 ImputeRegression2NewNames(
   ...,
-  oldNames = c("yImputed", "Ntotal", "nImputedTotal", "AnImputedTotal",
-    "BnImputedTotal", "estimateTotal", "AyHat", "ByHat", "AestimateOrig", "cvTotal"),
+  oldNames = c("yImputed", "Ntotal", "nImputedTotal", "AnImputedTotal", "BnImputedTotal",
+    "estimateTotal", "AyHat", "ByHat", "AestimateOrig", "cvTotal"),
   newNames = c("estimate", "N", "nImputed", "AnImputed", "BnImputed", "estimate",
     "AestimateYHat", "BestimateYHat", "y", "cv")
 )

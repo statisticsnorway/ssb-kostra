@@ -14,7 +14,6 @@ StrataApply(
   multiUnlist = FALSE,
   FunTotal = NULL,
   FunMultiTotal = NULL,
-  stringsAsFactors = FALSE,
   ...
 )
 }
@@ -36,8 +35,6 @@ StrataApply(
 \item{FunTotal}{A function to be applied on output element "aggregates" so that  output element "total" is produced}
 
 \item{FunMultiTotal}{A function to be applied on output element "multiAggregates" so that  output element "multiTotal" is produced}
-
-\item{stringsAsFactors}{Option used within the function (default is FALSE).}
 
 \item{...}{Further arguments passed to Fun}
 }

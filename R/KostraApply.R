@@ -49,7 +49,7 @@
 #' @return A data.frame
 #' @export
 #'
-#' @note The output ordering of the example depends on default.stringsAsFactors()
+#' @note The output ordering of the example depends on getOption("stringsAsFactors")
 #'
 #' @examples
 #' z1w <- KostraData("z1w")
