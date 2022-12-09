@@ -464,7 +464,7 @@ RowSumsByApply = function(x){
 
 
 correctFormula <- function(x){
-  if(class(x)=="formula") return(x)
+  if(inherits(x, "formula")) return(x)   #if(class(x)=="formula") return(x)
   x <- trimws(as.character(x))
   if(substr(x,1,1)!="~")
     x = paste("~",x,sep="")
