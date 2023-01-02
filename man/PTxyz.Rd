@@ -28,12 +28,11 @@ Assuming correct suppression, suppressed values become decimal numbers (not whol
 Within this r package this function will be used for testing
 }
 \examples{
+\dontrun{
 
 # Same examples as in ProtectTable 
 a1 <- PTxyz(EasyData("z1"), c("region","hovedint") ,"ant")
 a2 <- PTxyz(EasyData("z2"), c(1,3,4),5) 
-
-\dontrun{
  
 if (require(RegSDC)) { # RegSDCdata and SuppressDec
   # Same data as in RegSDCdata examples (and in paper)
