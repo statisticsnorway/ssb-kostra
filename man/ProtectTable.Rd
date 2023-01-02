@@ -61,10 +61,11 @@ ProtectTableData(data, ...)
 
 \item{method}{Parameter `method` in \code{{protectTable}}, \code{{protect_linked_tables}}
        or wrapper methods via \code{{PTwrap}}. 
-       `Gauss` (default) is an additional method that is not available in sdcTable.
+       `Gauss` (default) is implemented independently of `sdcTable`. There is also a similar variant implemented in sdcTable as `GAUSS`. 
+       But this implementation is not as optimal and `Gauss` is recommended instead.
 * **`"SIMPLEHEURISTIC"`:** This method is default in protectable.
 * **`"SIMPLEHEURISTIC_OLD"`:** As `"SIMPLEHEURISTIC"` in sdcTable versions prior to 0.32.
-* **`"OPT"`, `"HITAS"`, `"HYPERCUBE"`:** Other methods in protectable. `"HYPERCUBE"` is not possible in cases with two linked tables.
+* **`"OPT"`, `"HITAS"`, `"HYPERCUBE"`, `"GAUSS"`:** Other methods in protectable. `"HYPERCUBE"` is not possible in cases with two linked tables.
 * **`"SimpleSingle"`:**  `"SIMPLEHEURISTIC_OLD"` with `detectSingletons=TRUE` when `protectZeros=FALSE` and
                            `"SIMPLEHEURISTIC_OLD"` with `threshold=1` (can be overridden by input) when `protectZeros=TRUE`. 
 * **`"SIMPLEHEURISTICSingle"`:** As `"SimpleSingle"` with `"SIMPLEHEURISTIC"` instead of `"SIMPLEHEURISTIC_OLD"`.                          
@@ -150,7 +151,7 @@ created by unstacking (in cases with sever input freqvar variables).}
 \item{verbose}{Parameter sent to \code{{protectTable}}, \code{{protect_linked_tables}} or \code{{runArgusBatchFile}}.}
 
 \item{...}{Further parameters sent to \code{{protectTable}} (possibly via \code{{protect_linked_tables}})
-such as solve_attackerprobs and timeLimit. 
+such as timeLimit. 
 Parameters to  \code{{GaussSuppression}}, \code{{createArgusInput}} and \code{{PTwrap}} is also possible (see details).}
 }
 \value{
@@ -209,6 +210,8 @@ One or two tables are identified automatically and subjected to cell suppression
 ProtectTable makes a call to the function \code{{ProtectTable1}}.
 }
 \examples{
+\dontrun{
+
  # ==== Example 1 , 8 regions ====
  z1 <- EasyData("z1")        
  ProtectTable(z1,1:2, 3)
@@ -230,7 +233,6 @@ ProtectTable makes a call to the function \code{{ProtectTable1}}.
  ProtectTable(z2w, 1:2, 4:7) # With region-variable fylke
  ProtectTable(z2w, 1:3, 4:7) # Two linked tables
  
- \dontrun{
  # ==== Example 3 , 36 regions ====
  z3 <- EasyData("z3")   
  ProtectTable(z3, c(1,4,5), 7)                               # Three dimensions. No subtotals    

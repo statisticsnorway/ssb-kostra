@@ -67,10 +67,11 @@ IncDefault =  function(){
 #' @param maxN All cells having counts <= maxN are set as primary suppressed.
 #' @param method Parameter `method` in \code{{protectTable}}, \code{{protect_linked_tables}}
 #'        or wrapper methods via \code{{PTwrap}}. 
-#'        `Gauss` (default) is an additional method that is not available in sdcTable.
+#'        `Gauss` (default) is implemented independently of `sdcTable`. There is also a similar variant implemented in sdcTable as `GAUSS`. 
+#'        But this implementation is not as optimal and `Gauss` is recommended instead.
 #' * **`"SIMPLEHEURISTIC"`:** This method is default in protectable.
 #' * **`"SIMPLEHEURISTIC_OLD"`:** As `"SIMPLEHEURISTIC"` in sdcTable versions prior to 0.32.
-#' * **`"OPT"`, `"HITAS"`, `"HYPERCUBE"`:** Other methods in protectable. `"HYPERCUBE"` is not possible in cases with two linked tables.
+#' * **`"OPT"`, `"HITAS"`, `"HYPERCUBE"`, `"GAUSS"`:** Other methods in protectable. `"HYPERCUBE"` is not possible in cases with two linked tables.
 #' * **`"SimpleSingle"`:**  `"SIMPLEHEURISTIC_OLD"` with `detectSingletons=TRUE` when `protectZeros=FALSE` and
 #'                            `"SIMPLEHEURISTIC_OLD"` with `threshold=1` (can be overridden by input) when `protectZeros=TRUE`. 
 #' * **`"SIMPLEHEURISTICSingle"`:** As `"SimpleSingle"` with `"SIMPLEHEURISTIC"` instead of `"SIMPLEHEURISTIC_OLD"`.                          
@@ -125,7 +126,7 @@ IncDefault =  function(){
 #' @param IncProgress A function to report progress (incProgress in Shiny). Set equal to NULL to turn it off.
 #' @param verbose Parameter sent to \code{{protectTable}}, \code{{protect_linked_tables}} or \code{{runArgusBatchFile}}.  
 #' @param ...  Further parameters sent to \code{{protectTable}} (possibly via \code{{protect_linked_tables}})
-#'        such as solve_attackerprobs and timeLimit. 
+#'        such as timeLimit. 
 #'        Parameters to  \code{{GaussSuppression}}, \code{{createArgusInput}} and \code{{PTwrap}} is also possible (see details).
 #' 
 #' @details One or two tables are identified automatically and subjected to cell suppression 
@@ -178,6 +179,7 @@ IncDefault =  function(){
 #' @importFrom utils capture.output flush.console
 #' @importFrom methods hasArg
 #' @importFrom Matrix colSums
+#' @importFrom stats aggregate
 #' 
 #' @note ProtectTable makes a call to the function \code{{ProtectTable1}}.
 #' 
@@ -185,6 +187,8 @@ IncDefault =  function(){
 #'
 #'
 #' @examples
+#' \dontrun{
+#' 
 #'  # ==== Example 1 , 8 regions ====
 #'  z1 <- EasyData("z1")        
 #'  ProtectTable(z1,1:2, 3)
@@ -206,7 +210,6 @@ IncDefault =  function(){
 #'  ProtectTable(z2w, 1:2, 4:7) # With region-variable fylke
 #'  ProtectTable(z2w, 1:3, 4:7) # Two linked tables
 #'  
-#'  \dontrun{
 #'  # ==== Example 3 , 36 regions ====
 #'  z3 <- EasyData("z3")   
 #'  ProtectTable(z3, c(1,4,5), 7)                               # Three dimensions. No subtotals    
@@ -560,6 +563,29 @@ ProtectTable  <-  function(data,
         #  Code copied from PTxyz
         ptA <- finalData[, !(names(finalData) %in% c("Freq", "sdcStatus", "supp6547524")), drop = FALSE]
         
+        
+        if (is.null(freqVarInd)) {
+          GetPrintInc <- function(printInc = TRUE, ...) {
+            printInc
+          }
+          printInc <- GetPrintInc(...)
+          if (printInc) {
+            cat("[preAggregate ", dim(data)[1], "*", dim(data)[2], "->", sep = "")
+            flush.console()
+          }
+          
+          # These four lines is about aggregate. Other lines is about printing. 
+          dVar <- names(dimLists)
+          freqVar_ <- "f_Re_qVa_r"
+          data <- aggregate(list(f_Re_qVa_r = data[[dVar[1]]]), data[, dVar, drop = FALSE], length)
+          freqVarInd <- ncol(data)
+          
+          if (printInc) {
+            cat(dim(data)[1], "*", dim(data)[2], "]\n", sep = "")
+            flush.console()
+          }
+        }
+        
         #xxx <- CrossTable2ModelMatrix(data[, c(freqVarInd, dimVarInd), drop = FALSE], ptA, dimLists)
         #xxx <- CrossTable2ModelMatrix(data[, dimVarInd, drop = FALSE], ptA, dimLists)
         xxx <- CrossTable2ModelMatrix(data, ptA, dimLists)
@@ -567,11 +593,7 @@ ProtectTable  <-  function(data,
         rownames(xxx) <- apply(data[, names(data) %in% names(ptA), drop = FALSE], 1, paste, collapse = "_")
         colnames(xxx) <- apply(ptA, 1, paste, collapse = ":")
         
-        if(is.null(freqVarInd)){
-          yyy <- matrix(1, nrow=NROW(data), ncol=1)
-        } else {
-          yyy <- as.matrix(data[, freqVarInd, drop = FALSE])
-        }
+        yyy <- as.matrix(data[, freqVarInd, drop = FALSE])
         
         zzz <- as.matrix(Matrix::crossprod(xxx, yyy))
         
@@ -1226,12 +1248,11 @@ ProtectTable1 <- function(data, dimVarInd = 1:NCOL(data), freqVarInd = NULL, pro
 #' @author Øyvind Langsrud
 #'
 #' @examples
+#' \dontrun{
 #' 
 #' # Same examples as in ProtectTable 
 #' a1 <- PTxyz(EasyData("z1"), c("region","hovedint") ,"ant")
 #' a2 <- PTxyz(EasyData("z2"), c(1,3,4),5) 
-#' 
-#' \dontrun{
 #'  
 #' if (require(RegSDC)) { # RegSDCdata and SuppressDec
 #'   # Same data as in RegSDCdata examples (and in paper)
@@ -1443,7 +1464,12 @@ getInfo <- function(object, ...) object
 #' @importFrom SSBtools ModelMatrix
 protectTable <- function(object, ...) {
   mm <- ModelMatrix(object$data, hierarchies = object$dimList, crossTable = TRUE)
-  cbind(mm$crossTable, Freq = as.vector(Matrix::crossprod(mm$modelMatrix, object$data[[object$freqVarInd]])), sdcStatus = "s")
+  if (is.null(object$freqVarInd)) {
+    Freq <- as.vector(Matrix::colSums(mm$modelMatrix))
+  } else {
+    Freq <- as.vector(Matrix::crossprod(mm$modelMatrix, object$data[[object$freqVarInd]]))
+  }
+  cbind(mm$crossTable, Freq = Freq, sdcStatus = "s")
 }
 
 
