@@ -8,8 +8,8 @@ Maintainer: Øyvind Langsrud <oyl@ssb.no>
 Depends: R (>= 3.0.0), SmallCountRounding, SSBtools, MASS, Matrix, stringr 
 Imports: utils, methods
 Description: Functions for Kostra. This version includes only-Gauss replacement versions of all easySdcTable-functions except shiny-gui. Thus easySdcTable  dependency and thereby sdcTable dependency is avoided.
-License: SSB intern
-RoxygenNote: 7.2.2
+License: MIT + file LICENSE
+RoxygenNote: 7.2.3
 Encoding: UTF-8
 Suggests: 
     testthat
