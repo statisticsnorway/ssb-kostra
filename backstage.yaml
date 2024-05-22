@@ -1,0 +1,18 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ssb-kostra-r
+  title: Kostra R package
+  description: |
+    Web frontend for Kompis
+  tags:
+    - r
+    - kostra
+    - method-library
+  annotations:
+    github.com/project-slug: statisticsnorway/ssb-kostra
+spec:
+  type: library
+  system: kostra-kompis
+  owner: dapla-stat-developers
+  lifecycle: production
