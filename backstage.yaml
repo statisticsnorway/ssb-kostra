@@ -4,7 +4,7 @@ metadata:
   name: ssb-kostra-r
   title: Kostra R package
   description: |
-    Web frontend for Kompis
+    Method library for Kostra
   tags:
     - r
     - kostra
