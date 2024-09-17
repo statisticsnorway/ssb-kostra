@@ -23,6 +23,7 @@ if (TestkjoringHb) {
 #' @param pA Parameter that adjusts for small differences between the median and the 1st or 3rd quartile. Default value 0.05.
 #' @param pC Parameter that controls the length of the confidence interval.Default value 20.
 #' @param strataName Name of stratification variable. Optional. If strataName is given, the HB method is performed within each stratum.
+#' @param allowDiffOnly TRUE or FALSE. Optional. TRUE set as default. Can be set as FALSE to prevent the method from only considering different observations of x1 and x2
 #'
 #' @return Output of Hb is a data set of class data.frame. All units are returned, but the HB method is only performed on the data set
 #' where units with both x1 and x2 not missing and greater than zero are included. In this data set, units with x1 = x2 are included in
@@ -38,6 +39,7 @@ if (TestkjoringHb) {
 #'    \item{medRatio}{The median ratio}
 #'    \item{outlier}{A binary variable indicating whether the observation is an outlier (1) or not (0)}
 #'    \item{strata}{Strata name or number}
+#'    \item{allowDiffOnly}{TRUE/FALSE}
 #'
 #' @export
 #' @importFrom stats median quantile
@@ -90,9 +92,16 @@ Hb <- function (data, id, x1, x2,  pU = 0.5, pA = 0.05, pC = 20, strataName = NU
     else d <- dat[dat$strataName == s[i], ]
     keep <- apply(cbind(d$x1, d$x2), 1, function (x) {sum(!is.na(x)) == 2 & sum(x > 0) == 2})
     dK <- d[keep, ]
-    if (sum(dK$x1 == dK$x2) >= nrow(dK)/2) {
-      warning("Minst halvparten av enhetene har lik verdi i de to periodene. Metoden kjøres derfor kun på de
-              enhetene som har to ulike verdier på x1 og x2.")
+    if (nrow(dK) == 0 && !is.null(dat$strataName)) {
+        warning(paste0("Stratum ", s[i], " har 0 observasjoner. Hopper over."))
+        next
+    }
+    
+    sumObs <- nrow(dK)
+    sumEqObs <- sum(dK$x1 == dK$x2)
+    if ( sumEqObs / sumObs >= .5) {
+      warning(paste0(round(sumEqObs*100 / sumObs)," % av enhetene har lik verdi i de to periodene. Dette er >=50 % og metoden kjører derfor kun på de
+              enhetene som har to ulike verdier på x1 og x2."))
       dK <- dK[dK$x1 != dK$x2, ]
     }
     dN <- d[!is.element(d$id, dK$id), ]
