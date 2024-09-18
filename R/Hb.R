@@ -23,7 +23,6 @@ if (TestkjoringHb) {
 #' @param pA Parameter that adjusts for small differences between the median and the 1st or 3rd quartile. Default value 0.05.
 #' @param pC Parameter that controls the length of the confidence interval.Default value 20.
 #' @param strataName Name of stratification variable. Optional. If strataName is given, the HB method is performed within each stratum.
-#' @param allowDiffOnly TRUE or FALSE. Optional. TRUE set as default. Can be set as FALSE to prevent the method from only considering different observations of x1 and x2
 #'
 #' @return Output of Hb is a data set of class data.frame. All units are returned, but the HB method is only performed on the data set
 #' where units with both x1 and x2 not missing and greater than zero are included. In this data set, units with x1 = x2 are included in
@@ -39,7 +38,6 @@ if (TestkjoringHb) {
 #'    \item{medRatio}{The median ratio}
 #'    \item{outlier}{A binary variable indicating whether the observation is an outlier (1) or not (0)}
 #'    \item{strata}{Strata name or number}
-#'    \item{allowDiffOnly}{TRUE/FALSE}
 #'
 #' @export
 #' @importFrom stats median quantile
