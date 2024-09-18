@@ -93,13 +93,16 @@ Hb <- function (data, id, x1, x2,  pU = 0.5, pA = 0.05, pC = 20, strataName = NU
     keep <- apply(cbind(d$x1, d$x2), 1, function (x) {sum(!is.na(x)) == 2 & sum(x > 0) == 2})
     dK <- d[keep, ]
     if (nrow(dK) == 0 && !is.null(dat$strataName)) {
-        warning(paste0("Stratum ", s[i], " har 0 observasjoner. Hopper over."))
+        warning(paste0("Ingen enheter observert for begge perioder i stratum ", s[i], ". Hopper over."))
         next
-    }
-    
+    }    
     sumObs <- nrow(dK)
     sumEqObs <- sum(dK$x1 == dK$x2)
-    if ( sumEqObs / sumObs >= .5) {
+    if (sumEqObs == sumObs && !is.null(dat$strataName)) {
+        warning(paste0("Alle enheter har lik verdi i de to periodene for stratum ", s[i], ". Hopper over."))
+        next
+    }
+    if (sumEqObs / sumObs >= .5) {
       warning(paste0(round(sumEqObs*100 / sumObs)," % av enhetene har lik verdi i de to periodene. Dette er >=50 % og metoden kjører derfor kun på de
               enhetene som har to ulike verdier på x1 og x2."))
       dK <- dK[dK$x1 != dK$x2, ]
