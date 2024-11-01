@@ -1,3 +1,7 @@
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/statisticsnorway/ssb-kostra/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/statisticsnorway/ssb-kostra/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+  
 # Kostra R methods
 
 Denne r-pakken er i bruk i Kostra/KOMPIS og inneholder "metodebiblioteket" som ble utviklet i prosjektet. 

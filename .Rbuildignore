@@ -6,3 +6,7 @@ SECURITY.md
 ^.*\.Rproj$
 ^\.Rproj\.user$
 azure-pipelines.yml
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
