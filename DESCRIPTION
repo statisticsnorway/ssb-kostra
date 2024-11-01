@@ -13,3 +13,4 @@ RoxygenNote: 7.2.3
 Encoding: UTF-8
 Suggests: 
     testthat
+URL: https://statisticsnorway.github.io/ssb-kostra/
