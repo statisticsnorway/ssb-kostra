@@ -6,6 +6,9 @@
 \usage{
 unAsIs(X)
 }
+\arguments{
+\item{X}{an R object}
+}
 \value{
 X without 'AsIs'
 }
