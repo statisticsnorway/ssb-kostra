@@ -6,9 +6,6 @@
 \usage{
 unAsIs(X)
 }
-\arguments{
-\item{X}{}
-}
 \value{
 X without 'AsIs'
 }
