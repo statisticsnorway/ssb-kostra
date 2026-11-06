@@ -10,7 +10,6 @@
 <url><loc>https://statisticsnorway.github.io/ssb-kostra/reference/AutoNetting.html</loc></url>
 <url><loc>https://statisticsnorway.github.io/ssb-kostra/reference/BalanseRegnskap.html</loc></url>
 <url><loc>https://statisticsnorway.github.io/ssb-kostra/reference/CharacterReCode.html</loc></url>
-<url><loc>https://statisticsnorway.github.io/ssb-kostra/reference/CheckInput.html</loc></url>
 <url><loc>https://statisticsnorway.github.io/ssb-kostra/reference/CheckNumeric.html</loc></url>
 <url><loc>https://statisticsnorway.github.io/ssb-kostra/reference/Diff2NumVar.html</loc></url>
 <url><loc>https://statisticsnorway.github.io/ssb-kostra/reference/DotWrap.html</loc></url>
@@ -60,6 +59,7 @@
 <url><loc>https://statisticsnorway.github.io/ssb-kostra/reference/StrataApply.html</loc></url>
 <url><loc>https://statisticsnorway.github.io/ssb-kostra/reference/ThError.html</loc></url>
 <url><loc>https://statisticsnorway.github.io/ssb-kostra/reference/index.html</loc></url>
+<url><loc>https://statisticsnorway.github.io/ssb-kostra/reference/reexports.html</loc></url>
 <url><loc>https://statisticsnorway.github.io/ssb-kostra/reference/unAsIs.html</loc></url>
 </urlset>
 

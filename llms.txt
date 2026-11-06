@@ -1,0 +1,275 @@
+# Kostra R methods
+
+Denne R-pakken ble opprinnelig laget for bruk i KOSTRA/KOMPIS[^1] og
+inneholder «metodebiblioteket» som ble utviklet i prosjektet. Begrepet
+«metodebiblioteket» brukes i dag i en annen betydning, se [SSBs
+metodebibliotek](https://statisticsnorway.github.io/ssb-metodebiblioteket/).
+
+Funksjonene som ble programmert som en del av KOSTRA-metodebiblioteket
+følger en bestemt standard slik det er beskrevet i [Methods library of
+embedded R functions at Statistics
+Norway](https://www.revistadestatistica.ro/wp-content/uploads/2017/11/RRS-4_2017_tipar_A10.pdf).
+
+I forbindelse med regresjonsmetoder finnes et par dokumenter som
+forklarer noen detaljer: [Residualer i lineære
+modeller](https://statisticsnorway.github.io/ssb-kostra/extra/Residualer.pdf)
+og [Details about regression in the R package
+Kostra](https://statisticsnorway.github.io/ssb-kostra/extra/LmImpute.pdf).
+Se også [oppdatert
+kode](https://statisticsnorway.github.io/ssb-kostra/extra/README.md)
+
+Pakken inneholder funksjonene
+[`ProtectKostra()`](https://statisticsnorway.github.io/ssb-kostra/reference/ProtectKostra.md)
+og
+[`RoundKostra()`](https://statisticsnorway.github.io/ssb-kostra/reference/RoundKostra.md)
+for konfidensialitetsbeskyttelse. Disse funksjonene er imidlertid gamle,
+har begrenset funksjonalitet og et spesielt grensesnitt som er preget av
+både den tidligere standarden for KOSTRA/KOMPIS og standarden og
+mulighetene i R-pakken
+[sdcTable](https://cran.r-project.org/package=sdcTable). I stedet
+anbefales funksjoner i R-pakkene
+[GaussSuppression](https://cran.r-project.org/package=GaussSuppression)
+og
+[SmallCountRounding](https://cran.r-project.org/package=SmallCountRounding).
+
+Funksjonene
+[`KostraRegnskap()`](https://statisticsnorway.github.io/ssb-kostra/reference/KostraRegnskap.md)
+og
+[`BalanseRegnskap()`](https://statisticsnorway.github.io/ssb-kostra/reference/BalanseRegnskap.md)
+for regnskapsberegninger, som fortsatt finnes i denne pakken av hensyn
+til KOMPIS, anses også som utdaterte. Funksjonene er flyttet til en egen
+pakke,
+[ssb-kostraregnskap](https://github.com/statisticsnorway/ssb-kostraregnskap/),
+der funksjonaliteten er videreutviklet.
+
+[^1]: Brukerne av IT-systemet KOMPIS kunne produsere statistikk ved
+    hjelp av spesialspråket VTL og ved å velge metoder fra et
+    metodebibliotek i en meny. Disse brukerne forholdt seg ikke til
+    programmeringsspråket bak metodene. I KOSTRA-metodebiblioteket var
+    alle metodene programmert i R.
+
+# Package index
+
+## All functions
+
+- [`AggrSml2NumVar()`](https://statisticsnorway.github.io/ssb-kostra/reference/AggrSml2NumVar.md)
+  : Aggregated comparison of two numerical variables
+
+- [`AutoFormel()`](https://statisticsnorway.github.io/ssb-kostra/reference/AutoFormel.md)
+  : AutoFormel
+
+- [`BalanseRegnskapBeregning()`](https://statisticsnorway.github.io/ssb-kostra/reference/BalanseRegnskap.md)
+  [`BalanseRegnskapBeregningInput()`](https://statisticsnorway.github.io/ssb-kostra/reference/BalanseRegnskap.md)
+  [`BalanseRegnskapBeregningHierarkiALT()`](https://statisticsnorway.github.io/ssb-kostra/reference/BalanseRegnskap.md)
+  [`BalanseRegnskapBeregningHierarki()`](https://statisticsnorway.github.io/ssb-kostra/reference/BalanseRegnskap.md)
+  [`BalanseRegnskapBeregningHierarkiInput()`](https://statisticsnorway.github.io/ssb-kostra/reference/BalanseRegnskap.md)
+  [`BalanseRegnskap()`](https://statisticsnorway.github.io/ssb-kostra/reference/BalanseRegnskap.md)
+  [`BalanseRegnskapEnPeriode()`](https://statisticsnorway.github.io/ssb-kostra/reference/BalanseRegnskap.md)
+  : UTDATERT FUNKSJON: BalanseRegnskap
+
+- [`CharacterReCode()`](https://statisticsnorway.github.io/ssb-kostra/reference/CharacterReCode.md)
+  : CharacterReCode
+
+- [`CheckNumeric()`](https://statisticsnorway.github.io/ssb-kostra/reference/CheckNumeric.md)
+  : INTERNAL FUNCTION: Check values of a numeric vector or matrix
+  according to limits.
+
+- [`Diff2NumVar()`](https://statisticsnorway.github.io/ssb-kostra/reference/Diff2NumVar.md)
+  : Difference between two numerical variables
+
+- [`DotWrap()`](https://statisticsnorway.github.io/ssb-kostra/reference/DotWrap.md)
+  : Wrapper when name and value of parameter is the same
+
+- [`EasyData()`](https://statisticsnorway.github.io/ssb-kostra/reference/EasyData.md)
+  : Function that returns a dataset
+
+- [`FixRegionkode()`](https://statisticsnorway.github.io/ssb-kostra/reference/FixRegionkode.md)
+  : Sørger for at regiontall blir character med 4 eller 6 plasser og
+  ledende nuller
+
+- [`FreqMerge()`](https://statisticsnorway.github.io/ssb-kostra/reference/FreqMerge.md)
+  : Combine two frequency data frames
+
+- [`GD()`](https://statisticsnorway.github.io/ssb-kostra/reference/GD.md)
+  : Extend an input parameter to GetData
+
+- [`GetData()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetData.md)
+  [`GetData1()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetData.md)
+  [`GetData2me()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetData.md)
+  : Extracting a data.frame from a data.frame
+
+- [`GetDataWrappers()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`ImputeHistoryW()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`ImputeHistoryNewNamesW()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`ImputeHistoryTallW()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`ImputeHistoryTallSmallW()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`ImputeHistoryWideW()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`ImputeHistoryTallWideWSmall()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`ImputeRegressionW()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`ImputeRegressionNewNamesW()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`ImputeRegressionTallW()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`ImputeRegressionTallSmallW()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`ImputeRegressionWideW()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`ImputeRegressionWideSmallW()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`OutlierRegressionW()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`OutlierRegressionTallW()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`OutlierRegressionWideW()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`OutlierRegressionMicroW()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`ImputeRegression2W()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`ImputeRegression2NewNamesW()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`ImputeRegression2TallW()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`ImputeRegression2TallSmallW()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`ImputeRegression2WideW()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  [`ImputeRegression2WideSmallW()`](https://statisticsnorway.github.io/ssb-kostra/reference/GetDataWrappers.md)
+  : Examples of wrappers based on GetData
+
+- [`Hardcode()`](https://statisticsnorway.github.io/ssb-kostra/reference/Hardcode.md)
+  [`TalliD()`](https://statisticsnorway.github.io/ssb-kostra/reference/Hardcode.md)
+  [`WideAddName()`](https://statisticsnorway.github.io/ssb-kostra/reference/Hardcode.md)
+  [`WideSep()`](https://statisticsnorway.github.io/ssb-kostra/reference/Hardcode.md)
+  [`WideSep2()`](https://statisticsnorway.github.io/ssb-kostra/reference/Hardcode.md)
+  [`ProtectKostraTotal()`](https://statisticsnorway.github.io/ssb-kostra/reference/Hardcode.md)
+  [`ProtectKostraSdcStatus()`](https://statisticsnorway.github.io/ssb-kostra/reference/Hardcode.md)
+  [`ProtectKostraSep()`](https://statisticsnorway.github.io/ssb-kostra/reference/Hardcode.md)
+  : Small functions that return hard coded values
+
+- [`Hb()`](https://statisticsnorway.github.io/ssb-kostra/reference/Hb.md)
+  : Detection of outliers using the Hidiroglou-Berthelot (HB) method
+
+- [`ImputeHistory()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeHistory.md)
+  [`ImputeHistoryNewNames()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeHistory.md)
+  [`ImputeHistoryTall()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeHistory.md)
+  [`ImputeHistoryTallSmall()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeHistory.md)
+  [`ImputeHistoryWide()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeHistory.md)
+  [`ImputeHistoryWideSmall()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeHistory.md)
+  : Imputation of a single variable (y) by the most recent available
+  historical value
+
+- [`ImputeRegression()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeRegression.md)
+  [`ImputeRegressionNewNames()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeRegression.md)
+  [`ImputeRegressionTall()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeRegression.md)
+  [`ImputeRegressionTallSmall()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeRegression.md)
+  [`ImputeRegressionWide()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeRegression.md)
+  [`ImputeRegressionWideSmall()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeRegression.md)
+  : Imputation of a sigle variable (y) by a regression model using a
+  single explanatory variable (x).
+
+- [`ImputeRegression2()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeRegression2.md)
+  [`ImputeRegression2NewNames()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeRegression2.md)
+  [`ImputeRegression2Tall()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeRegression2.md)
+  [`ImputeRegression2TallSmall()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeRegression2.md)
+  [`ImputeRegression2Wide()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeRegression2.md)
+  [`ImputeRegression2WideSmall()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeRegression2.md)
+  : Imputation of a sigle variable (y) by a regression model using a
+  primary explanatory variable (x1) and a secondary explanatory variable
+  (x2) for cases where the primary is missing.
+
+- [`ImputeRegressionMulti()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeRegressionMulti.md)
+  [`ImputeRegressionMultiNewNames()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeRegressionMulti.md)
+  [`ImputeRegressionMultiTall()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeRegressionMulti.md)
+  [`ImputeRegressionMultiTallSmall()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeRegressionMulti.md)
+  [`ImputeRegressionMultiWide()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeRegressionMulti.md)
+  [`ImputeRegressionMultiWideSmall()`](https://statisticsnorway.github.io/ssb-kostra/reference/ImputeRegressionMulti.md)
+  : Imputation of a several variables (y's) by a regression model using
+  a single explanatory variable (x).
+
+- [`IntegerDataFrame()`](https://statisticsnorway.github.io/ssb-kostra/reference/IntegerDataFrame.md)
+  : Change numeric variables in data frame to integer
+
+- [`KostraApply()`](https://statisticsnorway.github.io/ssb-kostra/reference/KostraApply.md)
+  : Apply a function with data frame output over data subsets
+
+- [`KostraData()`](https://statisticsnorway.github.io/ssb-kostra/reference/KostraData.md)
+  : Return a data set
+
+- [`KostraRegnskapBeregning()`](https://statisticsnorway.github.io/ssb-kostra/reference/KostraRegnskap.md)
+  [`KostraRegnskapBeregningInput()`](https://statisticsnorway.github.io/ssb-kostra/reference/KostraRegnskap.md)
+  [`KostraRegnskapBeregningHierarkiALT()`](https://statisticsnorway.github.io/ssb-kostra/reference/KostraRegnskap.md)
+  [`KostraRegnskapBeregningHierarki()`](https://statisticsnorway.github.io/ssb-kostra/reference/KostraRegnskap.md)
+  [`KostraRegnskapBeregningHierarkiInput()`](https://statisticsnorway.github.io/ssb-kostra/reference/KostraRegnskap.md)
+  [`KostraRegnskap()`](https://statisticsnorway.github.io/ssb-kostra/reference/KostraRegnskap.md)
+  [`KostraRegnskapEnPeriode()`](https://statisticsnorway.github.io/ssb-kostra/reference/KostraRegnskap.md)
+  : UTDATERT FUNKSJON: KostraRegnskap
+
+- [`KostraRegnskapRegionAggregering()`](https://statisticsnorway.github.io/ssb-kostra/reference/KostraRegnskapRegionAggregering.md)
+  :
+
+  Aggregering av regioner basert på output fra `KostraRegnskap`
+
+- [`LmImpute()`](https://statisticsnorway.github.io/ssb-kostra/reference/LmImpute.md)
+  : INTERNAL FUNCTION: Regeression imputation.
+
+- [`LmImputeMulti()`](https://statisticsnorway.github.io/ssb-kostra/reference/LmImputeMulti.md)
+  [`LmImpute2()`](https://statisticsnorway.github.io/ssb-kostra/reference/LmImputeMulti.md)
+  [`LmImputeOne2Many()`](https://statisticsnorway.github.io/ssb-kostra/reference/LmImputeMulti.md)
+  : INTERNAL FUNCTION: Repeated regression imputation.
+
+- [`MultiRowHierarchyComputations()`](https://statisticsnorway.github.io/ssb-kostra/reference/MultiRowHierarchyComputations.md)
+  : MultiRowHierarchyComputations
+
+- [`NaToZero()`](https://statisticsnorway.github.io/ssb-kostra/reference/NaToZero.md)
+  : INTERNAL FUNCTION: Replace missing values by zero
+
+- [`OneComp()`](https://statisticsnorway.github.io/ssb-kostra/reference/OneComp.md)
+  : INTERNAL FUNCTION: Extract a single component from multivariate data
+
+- [`OutlierRegression()`](https://statisticsnorway.github.io/ssb-kostra/reference/OutlierRegression.md)
+  [`OutlierRegressionMicro()`](https://statisticsnorway.github.io/ssb-kostra/reference/OutlierRegression.md)
+  [`OutlierRegressionTall()`](https://statisticsnorway.github.io/ssb-kostra/reference/OutlierRegression.md)
+  [`OutlierRegressionWide()`](https://statisticsnorway.github.io/ssb-kostra/reference/OutlierRegression.md)
+  : Finding outliers of a sigle variable (y) by a regression model using
+  a single explanatory variable (x).
+
+- [`PTxyz()`](https://statisticsnorway.github.io/ssb-kostra/reference/PTxyz.md)
+  : ProtectTable with output ready for SuppressDec in package RegSDC
+
+- [`PrintHeadTail()`](https://statisticsnorway.github.io/ssb-kostra/reference/PrintHeadTail.md)
+  : PrintHeadTail
+
+- [`ProtectKostra()`](https://statisticsnorway.github.io/ssb-kostra/reference/ProtectKostra.md)
+  : OUTDATED FUNCTION: Table suppression according to a frequency rule
+  following the standards in the Kostra project.
+
+- [`ProtectTable()`](https://statisticsnorway.github.io/ssb-kostra/reference/ProtectTable.md)
+  [`ProtectTableData()`](https://statisticsnorway.github.io/ssb-kostra/reference/ProtectTable.md)
+  : Only-Gauss replacement function for easySdcTable::ProtectTable
+
+- [`ProtectTable1()`](https://statisticsnorway.github.io/ssb-kostra/reference/ProtectTable1.md)
+  : Only-Gauss replacement function for easySdcTable::ProtectTable1
+
+- [`Quartile()`](https://statisticsnorway.github.io/ssb-kostra/reference/Quartile.md)
+  : Detection of outliers using quartiles and by comparing with other
+  data in same or previous period.
+
+- [`Rank2NumVar()`](https://statisticsnorway.github.io/ssb-kostra/reference/Rank2NumVar.md)
+  : Comparing the biggest units with respect to two numerical variables
+
+- [`RoundKostra()`](https://statisticsnorway.github.io/ssb-kostra/reference/RoundKostra.md)
+  : OUTDATED FUNCTION: Rounding à la Heldal following the standards in
+  the Kostra project.
+
+- [`SimpleDiff2NumVar()`](https://statisticsnorway.github.io/ssb-kostra/reference/SimpleDiff2NumVar.md)
+  : SimpleDiff2NumVar
+
+- [`SimpleHb()`](https://statisticsnorway.github.io/ssb-kostra/reference/SimpleHb.md)
+  : SimpleHb
+
+- [`SimpleImputeHistoryWide()`](https://statisticsnorway.github.io/ssb-kostra/reference/SimpleImputeHistoryWide.md)
+  : SimpleImputeHistoryWide
+
+- [`SimpleImputeRegressionWide()`](https://statisticsnorway.github.io/ssb-kostra/reference/SimpleImputeRegressionWide.md)
+  : SimpleImputeRegressionWide
+
+- [`SimpleRank2NumVar()`](https://statisticsnorway.github.io/ssb-kostra/reference/SimpleRank2NumVar.md)
+  : SimpleRank2NumVar
+
+- [`SingleRowHierarchyComputations()`](https://statisticsnorway.github.io/ssb-kostra/reference/SingleRowHierarchyComputations.md)
+  : SingleRowHierarchyComputations
+
+- [`StrataApply()`](https://statisticsnorway.github.io/ssb-kostra/reference/StrataApply.md)
+  : INTERNAL FUNCTION: Apply a function with list output over data
+  subsets and structure output into various matrices.
+
+- [`ThError()`](https://statisticsnorway.github.io/ssb-kostra/reference/ThError.md)
+  : Detection of 1000-error
+
