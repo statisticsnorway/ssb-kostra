@@ -9,7 +9,7 @@
 \alias{KostraRegnskapBeregningHierarkiInput}
 \alias{KostraRegnskap}
 \alias{KostraRegnskapEnPeriode}
-\title{KostraRegnskap}
+\title{UTDATERT FUNKSJON: KostraRegnskap}
 \usage{
 KostraRegnskapBeregning(
   data,
@@ -149,10 +149,12 @@ Formlene vil bli korrigert ved hjelp av funksjonen \code{\link{AutoFormel}}.}
 En data frame
 }
 \description{
-KostraRegnskap er en wrapper til funksjonen KostraRegnskapEnPeriode som, ved flere perioder, blir kalt flere ganger.
-I output-kolonnen regnskapsomfang betyr A konsern og B kasse.
+UTDATERT FUNKSJON: Bruk funksjoner i pakken på github.com/statisticsnorway/ssb-kostraregnskap/
 }
 \details{
+KostraRegnskap er en wrapper til funksjonen KostraRegnskapEnPeriode som, ved flere perioder, blir kalt flere ganger.
+I output-kolonnen regnskapsomfang betyr A konsern og B kasse.
+
 Regioner kan settes til et tall. F.eks regioner=5 betyr at de 5 første regionene i data velges.
 Det kan også gjøres utvalg fra regionene i data ved bruk av *, ?, ! og –.
 Her brukes ! til å invertere enkeltvalg, mens – brukes til fjerning fra det samlede utvalget. Det betyr at bruk av – tilsvarer sign i stjernetabell.

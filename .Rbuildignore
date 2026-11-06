@@ -10,3 +10,4 @@ azure-pipelines.yml
 ^docs$
 ^pkgdown$
 ^\.github$
+^extra$

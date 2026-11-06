@@ -7,7 +7,7 @@
 unAsIs(X)
 }
 \arguments{
-\item{X}{}
+\item{X}{an R object}
 }
 \value{
 X without 'AsIs'

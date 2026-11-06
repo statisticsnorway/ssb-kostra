@@ -160,7 +160,9 @@ Fgrepl = function(pattern, x){  # grepl with fixed = TRUE
 
 
 
-#' KostraRegnskap
+#' UTDATERT FUNKSJON: KostraRegnskap
+#' 
+#' UTDATERT FUNKSJON: Bruk funksjoner i pakken på github.com/statisticsnorway/ssb-kostraregnskap/
 #'
 #' KostraRegnskap er en wrapper til funksjonen KostraRegnskapEnPeriode som, ved flere perioder, blir kalt flere ganger.
 #' I output-kolonnen regnskapsomfang betyr A konsern og B kasse.

@@ -211,7 +211,7 @@ OneFromEqual = function(x){
 
 #' Getting rid of 'AsIs' class attribute
 #'
-#' @param X
+#' @param X an R object
 #'
 #' @return X without 'AsIs'
 #' @export
