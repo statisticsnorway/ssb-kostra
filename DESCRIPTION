@@ -1,8 +1,8 @@
 Package: Kostra
 Type: Package
 Title: Functions for Kostra
-Version: 1.3.3
-Date: 2023-01-02
+Version: 1.4.0
+Date: 2026-11-06
 Authors@R: c(
     person("Magnar", "Lillegård", role = "aut"),
     person("Anna-Karin", "Mevik", role = "aut"),
