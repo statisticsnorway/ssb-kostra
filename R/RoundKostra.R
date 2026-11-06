@@ -1,5 +1,9 @@
-#' Rounding à la Heldal following the standards in the Kostra project.
+#' OUTDATED FUNCTION: Rounding à la Heldal following the standards in the Kostra project.
 #'
+#' This function is outdated, has limited functionality, and uses a specialized
+#' interface influenced by both the former KOSTRA/KOMPIS standards and the
+#' design and capabilities of the R package sdcTable.
+#' Instead, functions from the R package SmallCountRounding are recommended.
 #'
 #' @encoding UTF8
 #'

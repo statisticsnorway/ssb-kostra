@@ -9,7 +9,7 @@
 \alias{BalanseRegnskapBeregningHierarkiInput}
 \alias{BalanseRegnskap}
 \alias{BalanseRegnskapEnPeriode}
-\title{BalanseRegnskap}
+\title{UTDATERT FUNKSJON: BalanseRegnskap}
 \usage{
 BalanseRegnskapBeregning(
   data,
@@ -75,6 +75,9 @@ BalanseRegnskapEnPeriode(
 Data frame med samme variabler som data i input og med kapitler/regnskapsomfang i henhold til annen input
 }
 \description{
+UTDATERT FUNKSJON: Bruk funksjoner i pakken på github.com/statisticsnorway/ssb-kostraregnskap/
+}
+\details{
 Funksjon som ligner på KostraRegnskap, men mye enklere.
 }
 \note{

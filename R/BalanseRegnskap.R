@@ -89,8 +89,9 @@ BalanseRegnskap = function(data,kapittelhierarki,
 }
 
 
-
-#' BalanseRegnskap
+#' UTDATERT FUNKSJON: BalanseRegnskap
+#' 
+#' UTDATERT FUNKSJON: Bruk funksjoner i pakken på github.com/statisticsnorway/ssb-kostraregnskap/
 #'
 #' Funksjon som ligner på KostraRegnskap, men mye enklere.
 #'

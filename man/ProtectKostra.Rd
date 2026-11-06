@@ -3,7 +3,7 @@
 \encoding{UTF8}
 \name{ProtectKostra}
 \alias{ProtectKostra}
-\title{Table suppression according to a frequency rule following the standards in the Kostra project.}
+\title{OUTDATED FUNCTION: Table suppression according to a frequency rule following the standards in the Kostra project.}
 \usage{
 ProtectKostra(
   data,
@@ -54,7 +54,10 @@ When FALSE totals for each freqVarGroup will be in output.}
 A data.frame with as many rows as input
 }
 \description{
-Table suppression according to a frequency rule following the standards in the Kostra project.
+This function is outdated, has limited functionality, and uses a specialized
+interface influenced by both the former KOSTRA/KOMPIS standards and the
+design and capabilities of the R package sdcTable.
+Instead, functions from the R package GaussSuppression are recommended.
 }
 \details{
 \strong{When freqVarGroup is NULL:}
