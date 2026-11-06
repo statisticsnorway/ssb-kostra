@@ -4,23 +4,33 @@
   
 # Kostra R methods
 
-Denne r-pakken er i bruk i Kostra/KOMPIS og inneholder "metodebiblioteket" som ble utviklet i prosjektet. 
+Denne R-pakken ble opprinnelig laget for bruk i KOSTRA/KOMPIS[^1] og inneholder «metodebiblioteket» som ble utviklet i prosjektet.
+Begrepet «metodebiblioteket» brukes i dag i en annen betydning, se 
+[SSBs metodebibliotek](https://statisticsnorway.github.io/ssb-metodebiblioteket/).
 
-En del kode er publisert som eksterne CRAN-pakker (easySdcTable, SmallCountRounding, SSBtools) som Kostra-pakken avhenger av.
+Funksjonene som ble programmert som en del av KOSTRA-metodebiblioteket følger en bestemt standard slik det er beskrevet i 
+[Methods library of embedded R functions at Statistics Norway](https://www.revistadestatistica.ro/wp-content/uploads/2017/11/RRS-4_2017_tipar_A10.pdf).
 
-Se mer informasjon og forklaring av metodene på [KOSTRA-produksjon: Metode – Brukerdokumentasjon](https://wiki.ssb.no/display/KOSPRO/Metode+-+Brukerdokumentasjon).
+I forbindelse med regresjonsmetoder finnes et par dokumenter som forklarer noen detaljer: 
+[Residualer i lineære modeller](extra/Residualer.pdf) og 
+[Details about regression in the R package Kostra](extra/LmImpute.pdf).
 
-Det er metodeseksjonen som forvalter denne r-koden slik det fremgår av [Sjekkliste for overlevering](https://wiki.ssb.no/pages/viewpage.action?pageId=66848286).
+Pakken inneholder funksjonene `ProtectKostra()` og `RoundKostra()` for konfidensialitetsbeskyttelse. 
+Disse funksjonene er imidlertid gamle, har begrenset funksjonalitet og et spesielt grensesnitt 
+som er preget av både den tidligere standarden for KOSTRA/KOMPIS og standarden og mulighetene i R-pakken 
+[sdcTable](https://cran.r-project.org/package=sdcTable).
+I stedet anbefales funksjoner i R-pakkene 
+[GaussSuppression](https://cran.r-project.org/package=GaussSuppression) og 
+[SmallCountRounding](https://cran.r-project.org/package=SmallCountRounding).
 
-Funksjonene som ble programmert som en del av metodebiblioteket følger en bestemt standard slik det er beskrevet i  [R-funksjoner for metodebiblioteket](https://wiki.ssb.no/display/s880/R-funksjoner+for+metodebiblioteket+20.april+2017) og  [Methods library of embedded R functions at Statistics Norway](https://wiki.ssb.no/display/s880/Methods+library+of+embedded+R+functions+at+Statistics+Norway).
-
-I forbindelse med regresjonsmetoder finnes et par dokumenter som forklarer noen detaljer: [Residualer i lineære modeller](https://wiki.ssb.no/display/s880/Residualer) og [Details about regression in the R package Kostra](https://wiki.ssb.no/display/s880/Details+about+regression+in+the+R+package+Kostra).
-
-Konfidensialitet ved avrunding ble tatt inn i Kostra-prosjektet på et senere stadium enn de andre metodene. Litt bakgrunn for denne implementeringen finnes på [Hvordan implementere avrunding à la Heldal i KOMPIS/KOSTRA?](https://wiki.ssb.no/pages/viewpage.action?pageId=148571267)
-
-
-Regnskapsberegninger (KostraRegnskap og BalanseRegnskap) ble tatt inn i denne r-pakken for å løse en krise i Kostra-prosjektet der førsøk på annen implementering hadde vist seg ikke å fungere. Teori om hvordan disse problemstillingene ble løst finnes på [Hierarkiske kombinasjoner ved matriseoperasjoner](https://wiki.ssb.no/display/s880/Hierarkiske+kombinasjoner+ved+matriseoperasjoner). De såkalte beregningstestene (...BeregningInput og ...BeregningHierarki) ble implementert etter at dette dokumentet ble skrevet. 
-Litt forklaring av parameteren stjernetabell finns på [stjernetabell](https://wiki.ssb.no/display/s880/stjernetabell). Regnskapsfunksjonene som er integrert i systemet følger ikke metodebibliotekstandarden. Mange inputvariabler er av typen data.frame og det forventes faste variabelnavn. Underliggende og mer generiske funksjoner ligger i r-pakka SSBtools.
+Funksjonene `KostraRegnskap()` og `BalanseRegnskap()` for regnskapsberegninger, 
+som fortsatt finnes i denne pakken av hensyn til KOMPIS, anses også som utdaterte. 
+Funksjonene er flyttet til en egen pakke, 
+[ssb-kostraregnskap](https://github.com/statisticsnorway/ssb-kostraregnskap/), 
+der funksjonaliteten er videreutviklet.
 
 
-
+[^1]: Brukerne av IT-systemet KOMPIS kunne produsere statistikk ved hjelp av 
+      spesialspråket VTL og ved å velge metoder fra et metodebibliotek i en meny. 
+      Disse brukerne forholdt seg ikke til programmeringsspråket bak metodene. 
+      I KOSTRA-metodebiblioteket var alle metodene programmert i R.
