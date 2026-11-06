@@ -7,6 +7,7 @@ Authors@R: c(
     person("Magnar", "Lillegård", role = "aut"),
     person("Anna-Karin", "Mevik", role = "aut"),
     person("Johan", "Heldal", role = "aut"),
+    person("Jan Sebastian", "Rothe", role = "ctb"),
     person("Øyvind", "Langsrud", email = "oyl@ssb.no",
            role = c("aut", "cre"))
     )
