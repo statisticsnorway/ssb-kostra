@@ -14,6 +14,7 @@ Funksjonene som ble programmert som en del av KOSTRA-metodebiblioteket følger e
 I forbindelse med regresjonsmetoder finnes et par dokumenter som forklarer noen detaljer: 
 [Residualer i lineære modeller](extra/Residualer.pdf) og 
 [Details about regression in the R package Kostra](extra/LmImpute.pdf).
+Se også [oppdatert kode](extra/README.md)
 
 Pakken inneholder funksjonene `ProtectKostra()` og `RoundKostra()` for konfidensialitetsbeskyttelse. 
 Disse funksjonene er imidlertid gamle, har begrenset funksjonalitet og et spesielt grensesnitt 
